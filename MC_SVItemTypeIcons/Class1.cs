@@ -12,7 +12,7 @@ namespace MC_SVItemTypeIcons
     {
         public const string pluginGuid = "mc.starvalor.itemtypeicons";
         public const string pluginName = "SV Item Type Icons";
-        public const string pluginVersion = "1.0.0";
+        public const string pluginVersion = "1.0.1";
 
         private static WaypointMasterControl wmc = null;
 
@@ -51,18 +51,21 @@ namespace MC_SVItemTypeIcons
                         }
                         if (__instance.itemID == 24)
                         {
+                            log.LogInfo(ItemDB.GetItem(24).itemName);
                             num = 3;
                         }
                     }
-                }
+                    if (__instance.itemType == 4)
+                        ___minimapIcon.transform.localScale *= 0.2f * (7 - (int)ShipDB.GetModel(__instance.itemID).shipClass);
+                }                 
 
                 GameObject go = new GameObject();
                 
                 SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
                 sr.sprite = wmc.arrowObject.transform.GetChild(num).gameObject.GetComponent<Image>().sprite;
                 go.transform.SetParent(___minimapIcon.transform.parent);
-                go.transform.position = ___minimapIcon.transform.position;
-                go.transform.localScale = ___minimapIcon.transform.localScale * 2f;
+                go.transform.position = ___minimapIcon.transform.position;                
+                go.transform.localScale = ___minimapIcon.transform.localScale;
                 go.transform.localEulerAngles = ___minimapIcon.transform.localEulerAngles;
                 go.layer = ___minimapIcon.layer;
                 go.SetActive(true);

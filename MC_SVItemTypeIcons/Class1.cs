@@ -65,7 +65,6 @@ namespace MC_SVItemTypeIcons
                             scale * ___minimapIcon.transform.localScale.y * (int)smd.shipClass * 0.9f, 
                             1);
                     }
-                        //___minimapIcon.transform.localScale *= 0.15f * (7 - (int)ShipDB.GetModel(__instance.itemID).shipClass);
                 }                 
 
                 GameObject go = new GameObject();

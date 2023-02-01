@@ -56,7 +56,16 @@ namespace MC_SVItemTypeIcons
                         }
                     }
                     if (__instance.itemType == 4)
-                        ___minimapIcon.transform.localScale *= 0.2f * (7 - (int)ShipDB.GetModel(__instance.itemID).shipClass);
+                    {
+                        ShipModelData smd = ShipDB.GetModel(__instance.itemID);
+                        //float scale = 1 / smd.sizeScale;
+                        float scale = 1 / smd.sizeScale;
+                        ___minimapIcon.transform.localScale = new Vector3(
+                            scale * ___minimapIcon.transform.localScale.x * (int)smd.shipClass * 0.9f, 
+                            scale * ___minimapIcon.transform.localScale.y * (int)smd.shipClass * 0.9f, 
+                            1);
+                    }
+                        //___minimapIcon.transform.localScale *= 0.15f * (7 - (int)ShipDB.GetModel(__instance.itemID).shipClass);
                 }                 
 
                 GameObject go = new GameObject();

@@ -12,7 +12,7 @@ namespace MC_SVItemTypeIcons
     {
         public const string pluginGuid = "mc.starvalor.itemtypeicons";
         public const string pluginName = "SV Item Type Icons";
-        public const string pluginVersion = "1.0.1";
+        public const string pluginVersion = "1.0.2";
 
         private static WaypointMasterControl wmc = null;
 
@@ -33,7 +33,12 @@ namespace MC_SVItemTypeIcons
             if (wmc == null)
                 return;
 
-            // Get the icon type
+            ___minimapIcon.transform.localScale = new Vector3(
+                            ___minimapIcon.transform.localScale.x * 2.5f,
+                            ___minimapIcon.transform.localScale.y * 2.5f,
+                            ___minimapIcon.transform.localScale.z);
+
+            // Get the icon type and set additional scaling
             if (__instance != null)
             {
                 int num = __instance.itemType;
@@ -51,18 +56,16 @@ namespace MC_SVItemTypeIcons
                         }
                         if (__instance.itemID == 24)
                         {
-                            log.LogInfo(ItemDB.GetItem(24).itemName);
                             num = 3;
                         }
                     }
                     if (__instance.itemType == 4)
                     {
                         ShipModelData smd = ShipDB.GetModel(__instance.itemID);
-                        //float scale = 1 / smd.sizeScale;
                         float scale = 1 / smd.sizeScale;
                         ___minimapIcon.transform.localScale = new Vector3(
-                            scale * ___minimapIcon.transform.localScale.x * (int)smd.shipClass * 0.9f, 
-                            scale * ___minimapIcon.transform.localScale.y * (int)smd.shipClass * 0.9f, 
+                            scale * ___minimapIcon.transform.localScale.x * (int)smd.shipClass * 0.7f, 
+                            scale * ___minimapIcon.transform.localScale.y * (int)smd.shipClass * 0.7f, 
                             1);
                     }
                 }                 

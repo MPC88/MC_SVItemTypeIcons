@@ -1,5 +1,7 @@
 # MC_SVItemTypeIcons
 
+**NOTE: As of v1.0.3 for game version 2.1, this mod only adds crystal and cargo box icons.  Escape pods and ancient relics are part of the game.  Ships will remain as blue dots.**
+  
 Backup your save before using any mods.  
   
 Uninstall any mods and attempt to replicate issues before reporting any suspected base game bugs on official channels.  

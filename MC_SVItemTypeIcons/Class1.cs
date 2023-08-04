@@ -12,7 +12,7 @@ namespace MC_SVItemTypeIcons
     {
         public const string pluginGuid = "mc.starvalor.itemtypeicons";
         public const string pluginName = "SV Item Type Icons";
-        public const string pluginVersion = "1.0.2";
+        public const string pluginVersion = "1.0.3";
 
         private static WaypointMasterControl wmc = null;
 
@@ -33,49 +33,36 @@ namespace MC_SVItemTypeIcons
             if (wmc == null)
                 return;
 
+            if (__instance.itemType > 4 || (__instance.itemType == 3 && __instance.itemID == 24))
+                return;
+
             ___minimapIcon.transform.localScale = new Vector3(
-                            ___minimapIcon.transform.localScale.x * 2.5f,
-                            ___minimapIcon.transform.localScale.y * 2.5f,
-                            ___minimapIcon.transform.localScale.z);
+                    ___minimapIcon.transform.localScale.x * 2.5f,
+                    ___minimapIcon.transform.localScale.y * 2.5f,
+                    ___minimapIcon.transform.localScale.z);
 
             // Get the icon type and set additional scaling
             if (__instance != null)
             {
                 int num = __instance.itemType;
-                if (num != 5)
+                if (__instance.itemType <= 3)
                 {
-                    if (__instance.itemType <= 3)
+                    num = 1;
+                }
+                if (__instance.itemType == 3)
+                {
+                    if (__instance.itemID >= 2 && __instance.itemID <= 4)
                     {
-                        num = 1;
+                        num = 2;
                     }
-                    if (__instance.itemType == 3)
-                    {
-                        if (__instance.itemID >= 2 && __instance.itemID <= 4)
-                        {
-                            num = 2;
-                        }
-                        if (__instance.itemID == 24)
-                        {
-                            num = 3;
-                        }
-                    }
-                    if (__instance.itemType == 4)
-                    {
-                        ShipModelData smd = ShipDB.GetModel(__instance.itemID);
-                        float scale = 1 / smd.sizeScale;
-                        ___minimapIcon.transform.localScale = new Vector3(
-                            scale * ___minimapIcon.transform.localScale.x * (int)smd.shipClass * 0.7f, 
-                            scale * ___minimapIcon.transform.localScale.y * (int)smd.shipClass * 0.7f, 
-                            1);
-                    }
-                }                 
+                }
 
                 GameObject go = new GameObject();
-                
+
                 SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
                 sr.sprite = wmc.arrowObject.transform.GetChild(num).gameObject.GetComponent<Image>().sprite;
                 go.transform.SetParent(___minimapIcon.transform.parent);
-                go.transform.position = ___minimapIcon.transform.position;                
+                go.transform.position = ___minimapIcon.transform.position;
                 go.transform.localScale = ___minimapIcon.transform.localScale;
                 go.transform.localEulerAngles = ___minimapIcon.transform.localEulerAngles;
                 go.layer = ___minimapIcon.layer;

@@ -33,7 +33,7 @@ namespace MC_SVItemTypeIcons
             if (wmc == null)
                 return;
 
-            if (__instance.itemType > 4 || (__instance.itemType == 3 && __instance.itemID == 24))
+            if (__instance.itemType >= 4 || (__instance.itemType == 3 && __instance.itemID == 24))
                 return;
 
             ___minimapIcon.transform.localScale = new Vector3(

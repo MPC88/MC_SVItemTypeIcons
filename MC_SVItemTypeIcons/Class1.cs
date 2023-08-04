@@ -12,7 +12,7 @@ namespace MC_SVItemTypeIcons
     {
         public const string pluginGuid = "mc.starvalor.itemtypeicons";
         public const string pluginName = "SV Item Type Icons";
-        public const string pluginVersion = "1.0.3";
+        public const string pluginVersion = "1.0.4";
 
         private static WaypointMasterControl wmc = null;
 
